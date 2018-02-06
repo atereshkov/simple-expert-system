@@ -22,6 +22,7 @@
 		A334B3712028EE51008396BD /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334B3702028EE51008396BD /* Matrix.swift */; };
 		A334B3742028F2C2008396BD /* ObjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334B3732028F2C2008396BD /* ObjectsTableVC.swift */; };
 		A334B3762028F2D3008396BD /* CharacteristicsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334B3752028F2D3008396BD /* CharacteristicsTableVC.swift */; };
+		A334F0C5202A585A00D84AF8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334F0C4202A585A00D84AF8 /* StoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A334B3702028EE51008396BD /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		A334B3732028F2C2008396BD /* ObjectsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsTableVC.swift; sourceTree = "<group>"; };
 		A334B3752028F2D3008396BD /* CharacteristicsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicsTableVC.swift; sourceTree = "<group>"; };
+		A334F0C4202A585A00D84AF8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				A334B3702028EE51008396BD /* Matrix.swift */,
+				A334F0C4202A585A00D84AF8 /* StoreManager.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				A334B3712028EE51008396BD /* Matrix.swift in Sources */,
 				A334B36C2028E7D5008396BD /* Cell.swift in Sources */,
 				A334B3662027B26B008396BD /* SolutionModeVC.swift in Sources */,
+				A334F0C5202A585A00D84AF8 /* StoreManager.swift in Sources */,
 				A334B3762028F2D3008396BD /* CharacteristicsTableVC.swift in Sources */,
 				A334B3312027AF84008396BD /* AppDelegate.swift in Sources */,
 			);

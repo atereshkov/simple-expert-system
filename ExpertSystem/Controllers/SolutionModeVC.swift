@@ -21,5 +21,4 @@ class SolutionModeVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
 }

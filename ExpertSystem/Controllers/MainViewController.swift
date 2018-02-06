@@ -10,13 +10,25 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var editModeButton: UIButton!
+    @IBOutlet weak var solutionModeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    // MARK: Actions
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if StoreManager.shared.matrix != nil {
+            solutionModeButton.isEnabled = true
+        } else {
+            solutionModeButton.isEnabled = false
+        }
+    }
     
+    // MARK: Actions
     
     @IBAction func editMode(_ sender: Any) {
         let storyboard = UIStoryboard(name: "EditMode", bundle: nil)

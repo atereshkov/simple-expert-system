@@ -107,6 +107,11 @@
                                 <action selector="backButtonPressed:" destination="WSJ-Ci-dLN" id="uhl-ip-NGY"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FlU-zi-gGY">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="WSJ-Ci-dLN" id="sY8-2k-23a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Uy-E8-JM8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -26,6 +26,7 @@ class EditModeVC: UIViewController {
     fileprivate var objectsVC: ObjectsTableVC?
     
     var matrix = Matrix()
+    
     var objects: [Item] = [] {
         didSet {
             updateObjectsTableView()
@@ -39,6 +40,8 @@ class EditModeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        StoreManager.shared.reset()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,6 +56,13 @@ class EditModeVC: UIViewController {
     // MARK: Actions
     
     @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        // TODO prepare matrix
+        
+        StoreManager.shared.setMatrix(matrix)
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -48,6 +48,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="editModeButton" destination="Lsb-el-Wka" id="xSF-nD-Thg"/>
+                        <outlet property="solutionModeButton" destination="DdX-dB-5PA" id="vHu-gx-4wj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
