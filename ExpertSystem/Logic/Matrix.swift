@@ -8,56 +8,23 @@
 
 import Foundation
 
-class Item {
-    
-    var uuid = UUID().uuidString
-    var characteristic: String
-    var object: String
-    var value: Bool
-    
-    init() {
-        characteristic = ""
-        object = ""
-        value = false
-    }
-    
-    init(characteristic: String, object: String, value: Bool) {
-        self.characteristic = characteristic
-        self.object = object
-        self.value = value
-    }
-    
-}
-
 class Matrix {
     
-    var matrix: [[Item]] = []
+    var matrix: [[MatrixItem]] = []
     
     // MARK: Init
     
     init() { }
     
-    init(row: Int, column: Int) {
-        for _ in 1...row {
-            var innerArray: [Item] = []
-            for _ in 1...column {
-                innerArray.append(Item())
-            }
-            matrix.append(innerArray)
-        }
-    }
-    
-    func setup(with items: [[Item]]) {
+    func setup(with items: [[MatrixItem]]) {
         self.matrix = items
     }
     
-    func setup(with objects: [Item], chars: [Item]) {
+    func setup(with objects: [MatrixObject], chars: [MatrixChar]) {
         for char in chars {
-            var innerArray: [Item] = []
+            var innerArray: [MatrixItem] = []
             for object in objects {
-                let charStr = char.characteristic
-                let objStr = object.object
-                innerArray.append(Item(characteristic: charStr, object: objStr, value: false))
+                innerArray.append(MatrixItem(characteristic: char, object: object, value: false))
             }
             self.matrix.append(innerArray)
         }
@@ -69,12 +36,12 @@ class Matrix {
         var topStr = ""
         for obj in 0..<matrix[0].count {
             topStr += "     "
-            topStr += String(describing: matrix[0][obj].object)
+            topStr += String(describing: matrix[0][obj].object.object)
         }
         Swift.print(topStr)
         
         for i in 0..<matrix.count {
-            var line = matrix[i][0].characteristic + "  "
+            var line = matrix[i][0].characteristic.char + "  "
             for j in 0..<matrix[i].count {
                 line += String(matrix[i][j].value)
                 line += "  "

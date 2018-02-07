@@ -10,7 +10,7 @@ import UIKit
 
 class ObjectsTableVC: UITableViewController {
     
-    var objects: [Item] = [] {
+    var objects: [MatrixObject] = [] {
         didSet {
             tableView.reloadData()
         }

@@ -27,12 +27,12 @@ class EditModeVC: UIViewController {
     
     var matrix = Matrix()
     
-    var objects: [Item] = [] {
+    var objects: [MatrixObject] = [] {
         didSet {
             updateObjectsTableView()
         }
     }
-    var characteristics: [Item] = [] {
+    var characteristics: [MatrixChar] = [] {
         didSet {
             updateCharacteristicsTableView()
         }
@@ -90,11 +90,11 @@ extension EditModeVC {
         charsVC.chars = characteristics
     }
     
-    func addCharacteristic(_ item: Item) {
+    func addCharacteristic(_ item: MatrixChar) {
         self.characteristics.append(item)
     }
     
-    func addObject(_ item: Item) {
+    func addObject(_ item: MatrixObject) {
         self.objects.append(item)
     }
     
@@ -111,11 +111,10 @@ extension EditModeVC {
             guard let name = alertController.textFields?[0].text else { return }
             switch item {
             case .characteristic:
-                let newItem = Item()
-                newItem.characteristic = name
+                let newItem = MatrixChar(char: name)
                 self.addCharacteristic(newItem)
             case .object:
-                let newItem = Item()
+                let newItem = MatrixObject(object: name)
                 newItem.object = name
                 self.addObject(newItem)
             }

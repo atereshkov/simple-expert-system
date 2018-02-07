@@ -10,7 +10,7 @@ import UIKit
 
 class CharacteristicsTableVC: UITableViewController {
     
-    var chars: [Item] = [] {
+    var chars: [MatrixChar] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -29,7 +29,7 @@ class CharacteristicsTableVC: UITableViewController {
         
         guard indexPath.row >= 0 && indexPath.row < chars.count else { return cell }
         let char = chars[indexPath.row]
-        cell.bind(item: char.characteristic)
+        cell.bind(item: char.char)
         return cell
     }
     
