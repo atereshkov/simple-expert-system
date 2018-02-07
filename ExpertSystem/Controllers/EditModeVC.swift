@@ -59,11 +59,15 @@ class EditModeVC: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        // TODO prepare matrix
         matrix.setup(with: objects, chars: characteristics)
         matrix.print()
         StoreManager.shared.setMatrix(matrix)
-        self.dismiss(animated: true, completion: nil)
+        
+        // Fill matrix
+        let count = matrix.matrix.count * matrix.matrix[0].count
+        showRequestDialog(for: matrix, i: 0, j: 0, count: count)
+        
+        //self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addCharacteristic(_ sender: Any) {
@@ -126,6 +130,47 @@ extension EditModeVC {
         }
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showRequestDialog(for matrix: Matrix, i: Int, j: Int, count: Int) {
+        guard count != 0 else {
+            Swift.print("All is done!")
+            matrix.print()
+            return
+        }
+        let countAll = matrix.matrix.count * matrix.matrix[0].count
+        let obj = matrix.matrix[i][j].object.object
+        let char = matrix.matrix[i][j].characteristic.char
+        let msg = "Does \(obj) have \(char)?"
+        let alertController = UIAlertController(title: "Matrix Filling", message: msg, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (_) in
+            matrix.matrix[i][j].value = true
+            let newCount = count - 1
+            var nextJ = j + 1
+            var nextI = i
+            if nextJ >= countAll / 2 {
+                nextI = i + 1
+                nextJ = 0
+            }
+            self.showRequestDialog(for: matrix, i: nextI, j: nextJ, count: newCount)
+        }
+        let noAction = UIAlertAction(title: "No", style: .default) { (_) in
+            matrix.matrix[i][j].value = false
+            let newCount = count - 1
+            var nextJ = j + 1
+            var nextI = i
+            if nextJ >= countAll / 2 {
+                nextI = i + 1
+                nextJ = 0
+            }
+            self.showRequestDialog(for: matrix, i: nextI, j: nextJ, count: newCount)
+        }
+        
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
         
         self.present(alertController, animated: true, completion: nil)
     }
