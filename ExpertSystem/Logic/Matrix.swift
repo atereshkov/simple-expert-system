@@ -54,4 +54,15 @@ class Matrix {
         }
     }
     
+    // Algorithm
+    
+    func removeZeroLines() {
+        // Stub
+    }
+    
+    func lineWithMinSum() -> Int {
+        // Stub
+        return 0
+    }
+    
 }
