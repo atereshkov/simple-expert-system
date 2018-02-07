@@ -33,6 +33,8 @@ class Matrix {
     
     var matrix: [[Item]] = []
     
+    // MARK: Init
+    
     init() { }
     
     init(row: Int, column: Int) {
@@ -47,6 +49,38 @@ class Matrix {
     
     func setup(with items: [[Item]]) {
         self.matrix = items
+    }
+    
+    func setup(with objects: [Item], chars: [Item]) {
+        for char in chars {
+            var innerArray: [Item] = []
+            for object in objects {
+                let charStr = char.characteristic
+                let objStr = object.object
+                innerArray.append(Item(characteristic: charStr, object: objStr, value: false))
+            }
+            self.matrix.append(innerArray)
+        }
+    }
+    
+    // MARK: Helpers
+    
+    func print() {
+        var topStr = ""
+        for obj in 0..<matrix[0].count {
+            topStr += "     "
+            topStr += String(describing: matrix[0][obj].object)
+        }
+        Swift.print(topStr)
+        
+        for i in 0..<matrix.count {
+            var line = matrix[i][0].characteristic + "  "
+            for j in 0..<matrix[i].count {
+                line += String(matrix[i][j].value)
+                line += "  "
+            }
+            Swift.print(line)
+        }
     }
     
 }

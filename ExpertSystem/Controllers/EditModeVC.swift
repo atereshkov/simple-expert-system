@@ -52,7 +52,6 @@ class EditModeVC: UIViewController {
         }
     }
     
-    
     // MARK: Actions
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -61,7 +60,8 @@ class EditModeVC: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         // TODO prepare matrix
-        
+        matrix.setup(with: objects, chars: characteristics)
+        matrix.print()
         StoreManager.shared.setMatrix(matrix)
         self.dismiss(animated: true, completion: nil)
     }
