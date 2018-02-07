@@ -59,6 +59,7 @@ class EditModeVC: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        matrix.clear()
         matrix.setup(with: objects, chars: characteristics)
         matrix.print()
         StoreManager.shared.setMatrix(matrix)

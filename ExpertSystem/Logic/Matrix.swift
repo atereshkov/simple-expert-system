@@ -32,6 +32,10 @@ class Matrix {
     
     // MARK: Helpers
     
+    func clear() {
+        self.matrix = []
+    }
+    
     func print() {
         var topStr = ""
         for obj in 0..<matrix[0].count {
