@@ -57,12 +57,38 @@ class Matrix {
     // Algorithm
     
     func removeZeroLines() {
-        // Stub
+        var indexesForRemove: [Int] = []
+        for i in 0..<matrix.count {
+            var zeroCount = 0
+            for j in 0..<matrix[i].count {
+                if matrix[i][j].value == false {
+                    zeroCount += 1
+                }
+            }
+            if zeroCount == matrix[i].count {
+                indexesForRemove.append(i)
+            }
+        }
+        for index in indexesForRemove {
+            matrix.remove(at: index)
+        }
     }
     
+    // Find index of matrix line with minimal sum
     func lineWithMinSum() -> Int {
-        // Stub
-        return 0
+        var lines: [Int: Int] = [:] // line - count
+        for i in 0..<matrix.count {
+            var zeroCount = 0
+            for j in 0..<matrix[i].count {
+                if matrix[i][j].value == true {
+                    zeroCount += 1
+                }
+            }
+            lines[i] = zeroCount
+        }
+        
+        let minimum = lines.min { a, b in a.value < b.value }
+        return minimum?.key ?? -1
     }
     
 }

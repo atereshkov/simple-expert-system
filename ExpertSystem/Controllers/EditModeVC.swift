@@ -139,6 +139,11 @@ extension EditModeVC {
         guard count != 0 else {
             Swift.print("All is done!")
             matrix.print()
+            matrix.removeZeroLines()
+            Swift.print("Removed zero lines:")
+            matrix.print()
+            Swift.print("Find minimum line:")
+            Swift.print(matrix.lineWithMinSum())
             return
         }
         let countAll = matrix.matrix.count * matrix.matrix[0].count
