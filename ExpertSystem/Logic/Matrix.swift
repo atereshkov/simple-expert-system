@@ -91,4 +91,27 @@ class Matrix {
         return minimum?.key ?? -1
     }
     
+    func removeTrueObjectsOn(line: Int) {
+        
+    }
+    
+    func remove(column: Int) {
+        let row = matrix.count
+        let col = matrix[0].count
+        
+        var newMatrix: [[MatrixItem]] = []
+        
+        for i in 0..<row {
+            for j in 0..<col {
+                if j >= column {
+                    newMatrix[i][j] = matrix[i][j+1]
+                } else {
+                    newMatrix[i][j] = matrix[i][j]
+                }
+            }
+        }
+        
+        self.matrix = newMatrix
+    }
+    
 }
