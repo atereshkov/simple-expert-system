@@ -147,9 +147,9 @@ extension EditModeVC {
             Swift.print("Find minimum line:")
             Swift.print(matrix.lineWithMinSum())
             doneButton.isEnabled = false
+            self.dismiss(animated: true, completion: nil)
             return
         }
-        let countAll = matrix.matrix.count * matrix.matrix[0].count
         let obj = matrix.matrix[i][j].object.object
         let char = matrix.matrix[i][j].characteristic.char
         let msg = "Does \(obj) have \(char)?"
@@ -160,7 +160,7 @@ extension EditModeVC {
             let newCount = count - 1
             var nextJ = j + 1
             var nextI = i
-            if nextJ >= countAll / 2 {
+            if nextJ >= matrix.matrix[i].count {
                 nextI = i + 1
                 nextJ = 0
             }
@@ -171,7 +171,7 @@ extension EditModeVC {
             let newCount = count - 1
             var nextJ = j + 1
             var nextI = i
-            if nextJ >= countAll / 2 {
+            if nextJ >= matrix.matrix[i].count{
                 nextI = i + 1
                 nextJ = 0
             }

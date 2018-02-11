@@ -83,7 +83,7 @@ class Matrix {
                 indexesForRemove.append(i)
             }
         }
-        for index in indexesForRemove {
+        for index in indexesForRemove.reversed() {
             matrix.remove(at: index)
         }
     }
@@ -118,7 +118,7 @@ class Matrix {
     func removeFalseObjectsOn(line: Int) {
         var removeColumns: [Int] = []
         for j in 0..<matrix[line].count {
-            if matrix[line][j].value == true {
+            if matrix[line][j].value == false {
                 removeColumns.append(j)
             }
         }

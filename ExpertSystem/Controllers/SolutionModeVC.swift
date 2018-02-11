@@ -33,31 +33,42 @@ class SolutionModeVC: UIViewController {
         let alertController = UIAlertController(title: "Solution Mode", message: msg, preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (_) in
-            matrix.removeTrueObjectsOn(line: queryLine)
+            guard matrix.matrix.count > 0 else { return }
+            matrix.removeFalseObjectsOn(line: queryLine)
             Swift.print("Removed columns:")
             matrix.print()
-            if matrix.matrix[0].count > 0 {
-                matrix.removeZeroLines()
-                Swift.print("Removed zero lines:")
-                matrix.print()
+            matrix.removeZeroLines()
+            Swift.print("Removed zero lines:")
+            matrix.print()
+            guard matrix.matrix.count > 0 else {
+                self.presentResult(result: "UNKNOWN!")
+                Swift.print("Unknown object!")
+                return
+            }
+            if matrix.matrix[0].count > 1 {
                 let newQueryLine = matrix.lineWithMinSum()
                 self.showSolutionDialog(for: matrix, queryLine: newQueryLine)
             } else {
-                Swift.print("END object: \(matrix.matrix[0][0].object)")
+                self.presentResult(result: matrix.matrix[0][0].object.object)
+                Swift.print("END object: \(matrix.matrix[0][0].object.object)")
+                StoreManager.shared.reset()
             }
         }
         let noAction = UIAlertAction(title: "No", style: .default) { (_) in
+            guard matrix.matrix.count > 0 else { return }
             matrix.removeTrueObjectsOn(line: queryLine)
             Swift.print("Removed columns:")
             matrix.print()
-            if matrix.matrix[0].count > 0 {
-                matrix.removeZeroLines()
-                Swift.print("Removed zero lines:")
-                matrix.print()
+            matrix.removeZeroLines()
+            Swift.print("Removed zero lines:")
+            matrix.print()
+            if matrix.matrix[0].count > 1 {
                 let newQueryLine = matrix.lineWithMinSum()
                 self.showSolutionDialog(for: matrix, queryLine: newQueryLine)
             } else {
-                Swift.print("END object: \(matrix.matrix[0][0].object)")
+                self.presentResult(result: matrix.matrix[0][0].object.object)
+                Swift.print("END object: \(matrix.matrix[0][0].object.object)")
+                StoreManager.shared.reset()
             }
         }
         
@@ -65,6 +76,12 @@ class SolutionModeVC: UIViewController {
         alertController.addAction(noAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func presentResult(result: String) {
+        let alert = UIAlertController(title: "Result", message: "Object: \(result)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: Actions

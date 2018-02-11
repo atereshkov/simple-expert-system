@@ -23,8 +23,10 @@ class MainViewController: UIViewController {
         
         if StoreManager.shared.matrix != nil {
             solutionModeButton.isEnabled = true
+            editModeButton.isEnabled = false
         } else {
             solutionModeButton.isEnabled = false
+            editModeButton.isEnabled = true
         }
     }
     
