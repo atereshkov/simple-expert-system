@@ -22,6 +22,8 @@ enum Type: String {
 
 class EditModeVC: UIViewController {
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     fileprivate var characteristicsVC: CharacteristicsTableVC?
     fileprivate var objectsVC: ObjectsTableVC?
     
@@ -144,6 +146,7 @@ extension EditModeVC {
             matrix.print()
             Swift.print("Find minimum line:")
             Swift.print(matrix.lineWithMinSum())
+            doneButton.isEnabled = false
             return
         }
         let countAll = matrix.matrix.count * matrix.matrix[0].count

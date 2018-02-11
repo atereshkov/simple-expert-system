@@ -23,21 +23,42 @@ class SolutionModeVC: UIViewController {
     // MARK: Logic
     
     fileprivate func showSolutionDialog(for matrix: Matrix, queryLine: Int) {
+        guard matrix.matrix.count > 0 else {
+            Swift.print("ShowSolutionDialog matrix.count < 0")
+            return
+        }
         let char = matrix.matrix[queryLine][0].characteristic.char
         let msg = "Does the object have \(char)?"
         
         let alertController = UIAlertController(title: "Solution Mode", message: msg, preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (_) in
-            
-            //self.showSolutionDialog(for: matrix, i: nextI, j: nextJ, count: newCount)
+            matrix.removeTrueObjectsOn(line: queryLine)
+            Swift.print("Removed columns:")
+            matrix.print()
+            if matrix.matrix[0].count > 0 {
+                matrix.removeZeroLines()
+                Swift.print("Removed zero lines:")
+                matrix.print()
+                let newQueryLine = matrix.lineWithMinSum()
+                self.showSolutionDialog(for: matrix, queryLine: newQueryLine)
+            } else {
+                Swift.print("END object: \(matrix.matrix[0][0].object)")
+            }
         }
         let noAction = UIAlertAction(title: "No", style: .default) { (_) in
-            matrix.remove(column: 0)
-            let newQueryLine = matrix.lineWithMinSum()
-            Swift.print("removed matrix:::")
+            matrix.removeTrueObjectsOn(line: queryLine)
+            Swift.print("Removed columns:")
             matrix.print()
-            self.showSolutionDialog(for: matrix, queryLine: newQueryLine)
+            if matrix.matrix[0].count > 0 {
+                matrix.removeZeroLines()
+                Swift.print("Removed zero lines:")
+                matrix.print()
+                let newQueryLine = matrix.lineWithMinSum()
+                self.showSolutionDialog(for: matrix, queryLine: newQueryLine)
+            } else {
+                Swift.print("END object: \(matrix.matrix[0][0].object)")
+            }
         }
         
         alertController.addAction(yesAction)

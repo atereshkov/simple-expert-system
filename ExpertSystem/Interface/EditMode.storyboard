@@ -113,6 +113,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="FlU-zi-gGY" id="SrQ-c4-zuj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Uy-E8-JM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

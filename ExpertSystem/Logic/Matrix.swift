@@ -47,6 +47,10 @@ class Matrix {
     }
     
     func print() {
+        guard matrix.count > 0 else {
+            Swift.print("Print < 0")
+            return
+        }
         var topStr = ""
         for obj in 0..<matrix[0].count {
             topStr += "     "
@@ -102,7 +106,23 @@ class Matrix {
     }
     
     func removeTrueObjectsOn(line: Int) {
-        
+        var removeColumns: [Int] = []
+        for j in 0..<matrix[line].count {
+            if matrix[line][j].value == true {
+                removeColumns.append(j)
+            }
+        }
+        remove(columns: removeColumns)
+    }
+    
+    func removeFalseObjectsOn(line: Int) {
+        var removeColumns: [Int] = []
+        for j in 0..<matrix[line].count {
+            if matrix[line][j].value == true {
+                removeColumns.append(j)
+            }
+        }
+        remove(columns: removeColumns)
     }
     
     func remove(column: Int) {
@@ -123,6 +143,12 @@ class Matrix {
         }
         
         self.matrix = newMatrix
+    }
+    
+    func remove(columns: [Int]) {
+        for column in columns.reversed() {
+            self.remove(column: column)
+        }
     }
     
 }
