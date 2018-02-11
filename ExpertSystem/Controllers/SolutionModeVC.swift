@@ -33,7 +33,7 @@ class SolutionModeVC: UIViewController {
             //self.showSolutionDialog(for: matrix, i: nextI, j: nextJ, count: newCount)
         }
         let noAction = UIAlertAction(title: "No", style: .default) { (_) in
-            matrix.remove(column: 1)
+            matrix.remove(column: 0)
             let newQueryLine = matrix.lineWithMinSum()
             Swift.print("removed matrix:::")
             matrix.print()

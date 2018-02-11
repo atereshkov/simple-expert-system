@@ -30,6 +30,16 @@ class Matrix {
         }
     }
     
+    init(row: Int, column: Int) {
+        for _ in 1...row {
+            var innerArray: [MatrixItem] = []
+            for _ in 1...column {
+                innerArray.append(MatrixItem())
+            }
+            matrix.append(innerArray)
+        }
+    }
+
     // MARK: Helpers
     
     func clear() {
@@ -99,10 +109,11 @@ class Matrix {
         let row = matrix.count
         let col = matrix[0].count
         
-        var newMatrix: [[MatrixItem]] = []
+        let m = Matrix(row: row, column: col - 1)
+        var newMatrix: [[MatrixItem]] = m.matrix
         
         for i in 0..<row {
-            for j in 0..<col {
+            for j in 0..<col-1 {
                 if j >= column {
                     newMatrix[i][j] = matrix[i][j+1]
                 } else {
