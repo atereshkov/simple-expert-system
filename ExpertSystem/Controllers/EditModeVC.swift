@@ -81,6 +81,21 @@ class EditModeVC: UIViewController {
         showInputDialog(for: .object)
     }
     
+    @IBAction func preChar(_ sender: Any) {
+        characteristics.append(MatrixChar(char: "Крылья"))
+        characteristics.append(MatrixChar(char: "Лапки"))
+        characteristics.append(MatrixChar(char: "Двигатель"))
+        characteristics.append(MatrixChar(char: "Шасси"))
+        characteristics.append(MatrixChar(char: "Клюв"))
+    }
+    
+    @IBAction func preObjects(_ sender: Any) {
+        objects.append(MatrixObject(object: "Птица"))
+        objects.append(MatrixObject(object: "Самолет"))
+        objects.append(MatrixObject(object: "Планер"))
+        objects.append(MatrixObject(object: "Муха"))
+    }
+    
 }
 
 // MARK: TableViews
